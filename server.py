@@ -15,25 +15,41 @@ def Home():
 
 @App.route("/dispersao", methods=["GET"])
 def Dispersão():
-    Coluna1 = request.form["Coluna1"]
-    Coluna2 = request.form["Coluna2"]
-    return render_template("dispersao.html",Coluna1=Coluna1 , Coluna2=Coluna2 )
+    #Coluna1 = request.form["Coluna1"]
+    #Coluna2 = request.form["Coluna2"]
+    return render_template("dispersao.html")
 
 @App.route("/barras", methods=["GET"])
 def Barras():
+    #GraficoBarras()
     return render_template("barras.html")
 
 @App.route("/boxplot", methods=["GET"])
 def Boxplot():
+    #GraficoBox()
     return render_template("boxplot.html")
 
 @App.route("/boxplocat", methods=["GET"])
 def Boxplotcat():
+    #GraficoBoxCat()
     return render_template("boxplocat.html")
+
+
 
 @App.route("/histograma", methods=["GET"])
 def Histograma():
     return render_template("histograma.html")
+@App.route("/gravar", methods=["POST"])
+def Histo():
+    X = request.form["Coluna1"]
+    sb.distplot(Dados[X], bins=10 , kde=True)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\histograma1.jpg')
+    return render_template("teste.html",Coluna1=X)
+@App.route("/teste", methods=["GET"])
+def testando():
+    return render_template("teste.html")
+
+
 
 if __name__ == "__main__":
     App.run(port=80,debug=80)
