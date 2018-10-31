@@ -39,15 +39,13 @@ def Boxplotcat():
 @App.route("/histograma", methods=["GET"])
 def Histograma():
     return render_template("histograma.html")
-@App.route("/gravar", methods=["POST"])
+@App.route("/gravar/teste", methods=["POST"])
 def Histo():
     X = request.form["Coluna1"]
     sb.distplot(Dados[X], bins=10 , kde=True)
     Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\histograma1.jpg')
     return render_template("teste.html",Coluna1=X)
-@App.route("/teste", methods=["GET"])
-def testando():
-    return render_template("teste.html")
+
 
 
 
