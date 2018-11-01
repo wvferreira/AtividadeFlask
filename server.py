@@ -26,8 +26,14 @@ def Barras():
 
 @App.route("/boxplot", methods=["GET"])
 def Boxplot():
-    #GraficoBox()
     return render_template("boxplot.html")
+@App.route("/graficoboxplot", methods=["POST"])
+def Box():
+    Y = request.form["Coluna1"]
+    sb.boxplot(y=Y, data=Dados)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
+    return render_template("teste.html",Coluna1=Y)
+
 
 @App.route("/boxplocat", methods=["GET"])
 def Boxplotcat():
@@ -39,11 +45,11 @@ def Boxplotcat():
 @App.route("/histograma", methods=["GET"])
 def Histograma():
     return render_template("histograma.html")
-@App.route("/gravar/teste", methods=["POST"])
+@App.route("/graficohistograma", methods=["POST"])
 def Histo():
     X = request.form["Coluna1"]
     sb.distplot(Dados[X], bins=10 , kde=True)
-    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\histograma1.jpg')
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
     return render_template("teste.html",Coluna1=X)
 
 
