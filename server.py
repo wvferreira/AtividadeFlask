@@ -27,6 +27,27 @@ def Dis():
 @App.route("/barras",methods=["GET"])
 def Barras():
     return render_template("barras.html")
+@App.route("/barras_quali_quanti",methods=["GET"])
+def Barras_quali_quanti():
+    return render_template("barras_quali_quanti.html")
+@App.route("/graficobarras", methods=["POST"])
+def Barras1():
+    X = request.form["Coluna1"]
+    Y = request.form["Coluna2"]
+    sb.barplot(x=X, y=Y, data=Dados)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
+    return render_template("teste.html",Coluna1=X,Coluna2=Y)
+@App.route("/barras_quali",methods=["GET"])
+def Barras_quali():
+    return render_template("barras_quali.html")
+@App.route("/graficobarras_quali", methods=["POST"])
+def Barras2():
+    X = request.form["Coluna1"]
+    Y = request.form["Coluna2"]
+    Z = request.form["Coluna3"]
+    sb.barplot(x=X, y=Z,hue=Y, data=Dados)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
+    return render_template("teste.html",Coluna1=X,Coluna2=Y,Coluna3=Z)
 
 
 @App.route("/boxplot", methods=["GET"])

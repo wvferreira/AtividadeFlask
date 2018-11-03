@@ -1,0 +1,30 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Barras</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <div>
+            <p>Selecione uma coluna qualitativa:</p>
+            <form action="/graficobarras" method="POST">							   
+                <input type="radio" name="Coluna1" value="Genero"/> Genero <br/>
+                <input type="radio" name="Coluna1" value="EstadoCivil"/> EstadoCivil <br/>
+                <input type="radio" name="Coluna1" value="Idade"/> Idade <br/>
+                <input type="radio" name="Coluna1" value="Filhos"/> Filhos <br/>
+                <input type="radio" name="Coluna1" value="Renda"/> Renda <br/>
+                <input type="radio" name="Coluna1" value="Pequeno"/> Pequeno <br/>
+                <p>Selecione uma coluna quantitativa:</p>
+                <form action="/graficobarras" method="POST">							   
+                    <input type="radio" name="Coluna2" value="Imagem"/> Imagem <br/>
+                    <input type="radio" name="Coluna2" value="Utilitario"/> Utilitario <br/>
+                    <input type="radio" name="Coluna2" value="Preco"/> Preco <br/>
+            <div class="button">
+                <button type="submit">Gerar</button>
+            </div>
+            </form> 
+        </div> 
+    </body>
+</html>
