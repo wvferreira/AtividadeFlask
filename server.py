@@ -15,14 +15,19 @@ def Home():
 
 @App.route("/dispersao", methods=["GET"])
 def Dispersão():
-    #Coluna1 = request.form["Coluna1"]
-    #Coluna2 = request.form["Coluna2"]
     return render_template("dispersao.html")
+@App.route("/graficodispersao", methods=["POST"])
+def Dis():
+    X = request.form["Coluna1"]
+    Y = request.form["Coluna2"]
+    sb.jointplot(x=X, y=Y, data=Dados)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
+    return render_template("teste.html",Coluna1=X,Coluna2=Y)
 
-@App.route("/barras", methods=["GET"])
+@App.route("/barras",methods=["GET"])
 def Barras():
-    #GraficoBarras()
     return render_template("barras.html")
+
 
 @App.route("/boxplot", methods=["GET"])
 def Boxplot():
@@ -34,12 +39,16 @@ def Box():
     Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
     return render_template("teste.html",Coluna1=Y)
 
-
-@App.route("/boxplocat", methods=["GET"])
+@App.route("/boxplotcat", methods=["GET"])
 def Boxplotcat():
-    #GraficoBoxCat()
-    return render_template("boxplocat.html")
-
+    return render_template("boxplotcat.html")
+@App.route("/graficoboxplotcat", methods=["POST"])
+def Boxplotcatg():
+    X = request.form["Coluna1"]
+    Y = request.form["Coluna2"]
+    sb.boxplot(x=X, y=Y, data=Dados)
+    Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
+    return render_template("teste.html",Coluna1=X,Coluna2=Y)
 
 
 @App.route("/histograma", methods=["GET"])
@@ -51,9 +60,6 @@ def Histo():
     sb.distplot(Dados[X], bins=10 , kde=True)
     Mplt.savefig('C:\\Users\\guilh\\Downloads\\AtividadeFlask\\static\\img\\grafico.jpg')
     return render_template("teste.html",Coluna1=X)
-
-
-
 
 if __name__ == "__main__":
     App.run(port=80,debug=80)
